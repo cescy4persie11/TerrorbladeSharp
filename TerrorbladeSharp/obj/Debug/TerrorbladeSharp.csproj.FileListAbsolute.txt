@@ -1,0 +1,12 @@
+c:\users\feiyang\documents\visual studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\TerrorbladeSharp.exe.config
+c:\users\feiyang\documents\visual studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\TerrorbladeSharp.exe
+c:\users\feiyang\documents\visual studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\TerrorbladeSharp.pdb
+c:\users\feiyang\documents\visual studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\Ensage.Common.dll
+c:\users\feiyang\documents\visual studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\Ensage.dll
+c:\users\feiyang\documents\visual studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\SharpDX.Direct3D9.dll
+c:\users\feiyang\documents\visual studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\SharpDX.dll
+c:\users\feiyang\documents\visual studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\SharpDX.XInput.dll
+c:\users\feiyang\documents\visual studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\EnsageSharp.Sandbox.dll
+c:\users\feiyang\documents\visual studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\Newtonsoft.Json.dll
+c:\users\feiyang\documents\visual studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\obj\Debug\TerrorbladeSharp.exe
+c:\users\feiyang\documents\visual studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\obj\Debug\TerrorbladeSharp.pdb
