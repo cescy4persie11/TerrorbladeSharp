@@ -23,6 +23,24 @@ namespace TerrorbladeSharp
             }
         }
 
+        public static int ArmletThreshold
+        {
+            get
+            {
+                return MenuManager.HP;
+            }
+        }
+
+        public static int SunderThreshold
+        {
+            get
+            {
+                return MenuManager.HealthPerc;
+            }
+        }
+
+
+
         public static Hero Hero { get; set; }
 
         public static List<Unit> Illusions { get; set; }

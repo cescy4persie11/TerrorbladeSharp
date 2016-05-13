@@ -24,12 +24,41 @@ namespace TerrorbladeSharp.Features
         {
             get
             {
-                return this.Armlet.IsValid && !this.Sleeper.Sleeping;
+                return this.Armlet.IsValid;
                       // && Variables.Hero.Health <= Variables.MenuManager.ArmletHpTreshold;
             }
         }
 
         public Sleeper Sleeper { get; private set; }
+
+        public void TurnOn()
+        {
+            if (!Variables.Hero.CanUseItems())
+            {
+                return;
+            }
+            if (!Variables.Hero.HasModifier("modifier_item_armlet_unholy_strength"))
+            {
+                this.Armlet.ToggleAbility();                
+            }
+            else if(Variables.Hero.Health < Variables.ArmletThreshold)
+            {
+                this.Armlet.ToggleAbility();
+                this.Armlet.ToggleAbility();
+            }
+        }
+
+        public void TurnOff()
+        {
+            if (!Variables.Hero.CanUseItems())
+            {
+                return;
+            }
+            if (Variables.Hero.HasModifier("modifier_item_armlet_unholy_strength"))
+            {
+                this.Armlet.ToggleAbility();
+            }          
+        }
 
         public void Toggle()
         {
@@ -43,7 +72,7 @@ namespace TerrorbladeSharp.Features
                      .Any(
                          x =>
                          x.IsValid && x.IsAlive && x.IsVisible
-                         && x.Distance2D(Variables.Hero) < x.GetAttackRange() + 200)
+                         && x.Distance2D(Variables.Hero) < 800)
                 && !Variables.Hero.HasModifiers(
                     new[]
                         {
@@ -66,8 +95,6 @@ namespace TerrorbladeSharp.Features
             {
                 this.Armlet.ToggleAbility();
             }
-
-            this.Sleeper.Sleep(500);
         }
     }
 }

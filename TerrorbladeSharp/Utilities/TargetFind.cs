@@ -24,7 +24,7 @@ namespace TerrorbladeSharp.Utilities
         public TargetFind()
         {
             this.sleeper = new Sleeper();
-            this.heroIcon = Drawing.GetTexture("materials/ensage_ui/miniheroes/lone_druid");
+            this.heroIcon = Drawing.GetTexture("materials/ensage_ui/miniheroes/terrorblade");
             this.iconSize = new Vector2(HUDInfo.GetHpBarSizeY() * 2);
         }
 

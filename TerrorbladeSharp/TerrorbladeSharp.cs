@@ -9,6 +9,7 @@ using Ensage.Common.Menu;
 using Ensage;
 using TerrorbladeSharp.Features;
 using TerrorbladeSharp.Utilities;
+using TerrorbladeSharp.Abilities;
 
 namespace TerrorbladeSharp
 {
@@ -39,9 +40,13 @@ namespace TerrorbladeSharp
 
         private Combo combo;
 
-        private ArmletToggler armToggler;
+        private AutoArmlet autoArmlet;
+
+        private AutoSunder autoSunder;
 
         private TargetFind targetFind;
+
+        private DrawText drawText;
 
         private Hero Target
         {
@@ -51,12 +56,18 @@ namespace TerrorbladeSharp
             }
         }
 
-        public void Draw()
+        public void OnDraw()
         {
             if (Variables.Hero == null || !Variables.Hero.IsValid || !Variables.Hero.IsAlive)
             {
                 return;
             }
+            drawText.DrawTextCombo(Variables.ComboOn);
+            if (Variables.ComboOn)
+            {
+                this.targetFind.DrawTarget();
+            }
+            combo.DrawTarget(Target);
         }
 
         public void OnLoad()
@@ -64,14 +75,19 @@ namespace TerrorbladeSharp
             Variables.Hero = ObjectManager.LocalHero;
             this.pause = Variables.Hero.ClassID != ClassID.CDOTA_Unit_Hero_Terrorblade;
             if (this.pause) return;
+            Variables.Hero = ObjectManager.LocalHero;
             Variables.MenuManager = new MenuManager(Me.Name);
             Variables.MenuManager.Menu.AddToMainMenu();
             Variables.EnemyTeam = Me.GetEnemyTeam();
+            Variables.Sunder = new Sunder(Me.Spellbook.Spell4);
             Variables.Illusions = ObjectManager.GetEntities<Unit>().Where(unit => unit.ClassID.Equals(ClassID.CDOTA_Unit_Hero_Terrorblade)).ToList();
-            //Variables.Reflection = 
             this.targetFind = new TargetFind();
             this.combo = new Combo();
-            
+            this.drawText = new DrawText();
+            this.autoArmlet = new AutoArmlet();
+            this.autoSunder = new AutoSunder();
+
+
             Game.PrintMessage(
                 "TerrorbladeSharp" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version + " loaded",
                 MessageType.LogMessage);
@@ -79,9 +95,8 @@ namespace TerrorbladeSharp
 
         public void OnUpdate_Combo()
         {
-            if (Variables.Hero == null || !Variables.Hero.IsValid || this.pause)
+            if (this.pause || Variables.Hero == null || !Variables.Hero.IsValid || !Variables.Hero.IsAlive)
             {
-                this.pause = Game.IsPaused;
                 return;
             }
             if (!Variables.ComboOn) return;
@@ -91,7 +106,29 @@ namespace TerrorbladeSharp
             if (Target == null) return;
             if (Illusions == null) return;
             Orbwalking.Orbwalk(Target, 0, 0, false, true);
+            //if (Utils.SleepCheck("attack"))
+            //{
+                //Me.Attack(Target);
+                //Utils.Sleep(800, "attack");
+            //}
+        }
 
+        public void OnUpdate_AutoArmlet()
+        {
+            if (this.pause || Variables.Hero == null || !Variables.Hero.IsValid || !Variables.Hero.IsAlive)
+            {
+                return;
+            }
+            autoArmlet.Execute();
+        }
+
+        public void OnUpdate_AutoSunder()
+        {
+            if (this.pause || Variables.Hero == null || !Variables.Hero.IsValid || !Variables.Hero.IsAlive)
+            {
+                return;
+            }
+            autoSunder.Execute();
         }
 
         public void Player_OnExecuteOrder(Player sender, ExecuteOrderEventArgs args)
@@ -100,8 +137,8 @@ namespace TerrorbladeSharp
             {
                 return;
             }
+            autoArmlet.PlayerExecution_Armlet(args);
             if (Target == null) return;
-            Console.WriteLine("my Order is " + args.Order);
             if (args.Order == Order.AttackTarget || args.Order == Order.AttackLocation || !Target.IsAlive)
             {
                 this.targetFind.UnlockTarget();
@@ -109,6 +146,8 @@ namespace TerrorbladeSharp
                 this.targetFind.LockTarget();
             }
         }
+
+
 
 
         public void OnClose()
@@ -119,7 +158,22 @@ namespace TerrorbladeSharp
                 Variables.MenuManager.Menu.RemoveFromMainMenu();
             }
             Variables.PowerTreadsSwitcher = null;
-            Variables.Illusions = null;
+        }
+
+        public void Event_OnUpdate(EventArgs e)
+        {
+            if (this.pause || Variables.Hero == null || !Variables.Hero.IsValid || !Variables.Hero.IsAlive)
+            {
+                return;
+            }
+            if (!Variables.ComboOn) return;
+            if (Target == null) return;
+            if (Illusions == null) return;
+            //if (!Variables.ComboOn) return;
+            combo.SetTarget(Target);
+            combo.Events_OnUpdate();
+              
+
         }
     }
 }

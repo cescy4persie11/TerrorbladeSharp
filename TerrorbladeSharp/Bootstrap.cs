@@ -20,16 +20,22 @@ namespace TerrorbladeSharp
         public void SubscribeEvents()
         {
             Events.OnLoad += this.Events_Onload;
+            Events.OnUpdate += this.Events_Update;
             Events.OnClose += this.Events_OnClose;
             Game.OnUpdate += this.Game_OnUpdate;
             //Game.OnWndProc += this.Game_OnWndProc;
-            //Drawing.OnDraw += this.Drawing_OnDraw;
+            Drawing.OnDraw += this.Drawing_OnDraw;
             Player.OnExecuteOrder += this.Player_OnExecuteOrder;
+        }
+
+        private void Events_Update(EventArgs args)
+        {
+            this.terrorbladeSharp.Event_OnUpdate(args);
         }
 
         private void Drawing_OnDraw(EventArgs args)
         {
-            //this.terrorbladeSharp.OnDraw();
+            this.terrorbladeSharp.OnDraw();
         }
 
         private void Events_Onload(object sender, EventArgs e)
@@ -45,6 +51,8 @@ namespace TerrorbladeSharp
         private void Game_OnUpdate(EventArgs args)
         {
             this.terrorbladeSharp.OnUpdate_Combo();
+            this.terrorbladeSharp.OnUpdate_AutoArmlet();
+            this.terrorbladeSharp.OnUpdate_AutoSunder();
         }
 
         private void Game_OnWndProc(WndEventArgs args)
@@ -54,10 +62,10 @@ namespace TerrorbladeSharp
 
         private void Player_OnExecuteOrder(Player sender, ExecuteOrderEventArgs args)
         {
-            //if (sender.Equals(ObjectManager.LocalPlayer))
-            //{
+            if (sender.Equals(ObjectManager.LocalPlayer))
+            {
                 this.terrorbladeSharp.Player_OnExecuteOrder(sender, args);
-            //}
+            }
         }
 
     }

@@ -69,7 +69,10 @@
     <Compile Include="Abilities\Sunder.cs" />
     <Compile Include="Bootstrap.cs" />
     <Compile Include="Features\ArmletToggler.cs" />
+    <Compile Include="Features\AutoArmlet.cs" />
+    <Compile Include="Features\AutoSunder.cs" />
     <Compile Include="Features\Combo.cs" />
+    <Compile Include="Features\DrawText.cs" />
     <Compile Include="Features\PowerTreadsSwitcher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
