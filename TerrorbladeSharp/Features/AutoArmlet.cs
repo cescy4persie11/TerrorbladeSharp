@@ -79,6 +79,7 @@ namespace TerrorbladeSharp.Features
             {
                 if (args.Ability == conjure)
                 {
+                    if (!hasArmlet()) return;
                     Update();
                     if (!conjure.CanBeCasted()) return;
                     if (Variables.Hero.HasModifier("modifier_item_armlet_unholy_strength")) return;

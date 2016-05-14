@@ -1,4 +1,5 @@
 ﻿using Ensage;
+using Ensage.Common;
 using Ensage.Common.Objects.UtilityObjects;
 using SharpDX;
 using System;
@@ -6,12 +7,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TerrorbladeSharp.Features.Orbwalk;
 
 namespace TerrorbladeSharp.Features
 {   
     public class Combo
     {
-        private static Dictionary<float, Orbwalker> orbwalkerDictionary = new Dictionary<float, Orbwalker>();
+        private static Dictionary<float, Orbwalk.Orbwalker> orbwalkerDictionary = new Dictionary<float, Orbwalk.Orbwalker>();
 
         private Hero target;
 
@@ -36,12 +38,13 @@ namespace TerrorbladeSharp.Features
         public void Events_OnUpdate()
         {
             if (ObjectManager.LocalHero == null) return;
-            foreach(var i in Illusions)
+            Orbwalk.Orbwalking.Orbwalk(target, 0, 0, false, true);
+            foreach (var i in Illusions)
             {
-                Orbwalker orbwalker;
+                Orbwalk.Orbwalker orbwalker;
                 if (!orbwalkerDictionary.TryGetValue(i.Handle, out orbwalker))
                 {
-                    orbwalker = new Orbwalker(i);
+                    orbwalker = new Orbwalk.Orbwalker(i);
                     orbwalkerDictionary.Add(i.Handle, orbwalker);
                 }
                 orbwalker.OrbwalkOn(target, 0, 0, false, true);

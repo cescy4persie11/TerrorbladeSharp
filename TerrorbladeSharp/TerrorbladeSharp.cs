@@ -58,7 +58,7 @@ namespace TerrorbladeSharp
 
         public void OnDraw()
         {
-            if (Variables.Hero == null || !Variables.Hero.IsValid || !Variables.Hero.IsAlive)
+            if (this.pause || Variables.Hero == null || !Variables.Hero.IsValid || !Variables.Hero.IsAlive)
             {
                 return;
             }
@@ -100,12 +100,12 @@ namespace TerrorbladeSharp
                 return;
             }
             if (!Variables.ComboOn) return;
-            this.targetFind.Find();
-            Variables.Illusions = ObjectManager.GetEntities<Unit>().Where(unit => unit.ClassID.Equals(ClassID.CDOTA_Unit_Hero_Terrorblade) && unit.IsIllusion).ToList();
+            //this.targetFind.Find();
+            //Variables.Illusions = ObjectManager.GetEntities<Unit>().Where(unit => unit.ClassID.Equals(ClassID.CDOTA_Unit_Hero_Terrorblade) && unit.IsIllusion).ToList();
             
-            if (Target == null) return;
-            if (Illusions == null) return;
-            Orbwalking.Orbwalk(Target, 0, 0, false, true);
+            //if (Target == null) return;
+            //if (Illusions == null) return;
+            //Orbwalking.Orbwalk(Target, 0, 0, false, true);
             //if (Utils.SleepCheck("attack"))
             //{
                 //Me.Attack(Target);
@@ -139,11 +139,14 @@ namespace TerrorbladeSharp
             }
             autoArmlet.PlayerExecution_Armlet(args);
             if (Target == null) return;
-            if (args.Order == Order.AttackTarget || args.Order == Order.AttackLocation || !Target.IsAlive)
+            if (args.Order == Order.AttackTarget)
             {
                 this.targetFind.UnlockTarget();
                 this.targetFind.Find();
-                this.targetFind.LockTarget();
+            }
+            else
+            {
+                this.targetFind.UnlockTarget();
             }
         }
 
@@ -167,9 +170,13 @@ namespace TerrorbladeSharp
                 return;
             }
             if (!Variables.ComboOn) return;
-            if (Target == null) return;
+            Variables.Illusions = ObjectManager.GetEntities<Unit>().Where(unit => unit.ClassID.Equals(ClassID.CDOTA_Unit_Hero_Terrorblade) && unit.IsIllusion).ToList();
+
             if (Illusions == null) return;
             //if (!Variables.ComboOn) return;
+            this.targetFind.Find();
+            if (Target == null) return;
+            this.targetFind.LockTarget();
             combo.SetTarget(Target);
             combo.Events_OnUpdate();
               

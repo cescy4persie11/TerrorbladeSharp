@@ -73,6 +73,11 @@
     <Compile Include="Features\AutoSunder.cs" />
     <Compile Include="Features\Combo.cs" />
     <Compile Include="Features\DrawText.cs" />
+    <Compile Include="Features\Orbwalk\AttackAnimationTracker.cs" />
+    <Compile Include="Features\Orbwalk\Attacker.cs" />
+    <Compile Include="Features\Orbwalk\Orbwalker.cs" />
+    <Compile Include="Features\Orbwalk\Orbwalking.cs" />
+    <Compile Include="Features\Orbwalk\Sleeper.cs" />
     <Compile Include="Features\PowerTreadsSwitcher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
