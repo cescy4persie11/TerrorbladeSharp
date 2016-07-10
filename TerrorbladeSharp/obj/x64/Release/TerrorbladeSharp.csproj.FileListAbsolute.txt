@@ -1,0 +1,13 @@
+C:\Users\Feiyang\Documents\Visual Studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\TerrorbladeSharp.exe.config
+C:\Users\Feiyang\Documents\Visual Studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\TerrorbladeSharp.exe
+C:\Users\Feiyang\Documents\Visual Studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\TerrorbladeSharp.pdb
+C:\Users\Feiyang\Documents\Visual Studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\Ensage.Common.dll
+C:\Users\Feiyang\Documents\Visual Studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\Ensage.dll
+C:\Users\Feiyang\Documents\Visual Studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\SharpDX.Direct3D9.dll
+C:\Users\Feiyang\Documents\Visual Studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\SharpDX.dll
+C:\Users\Feiyang\Documents\Visual Studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\SharpDX.XInput.dll
+C:\Users\Feiyang\Documents\Visual Studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\Newtonsoft.Json.dll
+C:\Users\Feiyang\Documents\Visual Studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\bin\Release\Ensage.Common.pdb
+C:\Users\Feiyang\Documents\Visual Studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\obj\x64\Release\TerrorbladeSharp.exe
+C:\Users\Feiyang\Documents\Visual Studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\obj\x64\Release\TerrorbladeSharp.pdb
+C:\Users\Feiyang\Documents\Visual Studio 2015\Projects\TerrorbladeSharp\TerrorbladeSharp\obj\x64\Release\TerrorbladeSharp.csprojResolveAssemblyReference.cache

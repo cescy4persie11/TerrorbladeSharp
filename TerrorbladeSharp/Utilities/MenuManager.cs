@@ -54,5 +54,7 @@ namespace TerrorbladeSharp.Utilities
                 return this.SunderThresholdMenu.GetValue<Slider>().Value;
             }
         }
+
+
     }
 }

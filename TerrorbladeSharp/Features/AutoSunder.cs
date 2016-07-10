@@ -39,10 +39,14 @@ namespace TerrorbladeSharp.Features
         public void Execute()
         {
             if ((100.0 * me.Health/me.MaximumHealth) > Variables.SunderThreshold) return;
+            //will not sunder if enemy has 2 * hp% lower than me
+            
             if (!sunder.CanbeCast()) return; 
             if (me.CanCast())
             {
                 FindSunderTarget();
+                if (sunderTarget == null) return;
+                if (this.sunderTarget.Health * 1.0 / this.sunderTarget.MaximumHealth < 2.0 * me.Health / me.MaximumHealth) return;
                 if (Utils.SleepCheck("sunder"))
                 {
                     sunder.UseOn(this.sunderTarget);
